@@ -1,5 +1,9 @@
 package com.cgi.shoppingapp.dao;
 
-public interface ProductDao {
+import java.util.List;
 
+import com.cgi.shoppingapp.model.Product;
+
+public interface ProductDao {
+	public List<Product> getAllProducts();
 }
