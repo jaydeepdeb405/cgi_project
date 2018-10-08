@@ -20,6 +20,7 @@ public class MainController {
 	public String productHome(Model model) {
 		List<Product> products = service.showAllProducts();
 		model.addAttribute("products",products);
+		System.out.println("hello");
 		return "product";
 	}
 }
