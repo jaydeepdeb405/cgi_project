@@ -21,6 +21,7 @@ public class MainController {
 		List<Product> products = service.showAllProducts();
 		model.addAttribute("products",products);
 		System.out.println("hello");
+		System.out.println("pallavi");
 		return "product";
 	}
 }
