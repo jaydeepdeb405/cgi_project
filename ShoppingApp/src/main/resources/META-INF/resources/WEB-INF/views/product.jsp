@@ -89,7 +89,7 @@
       <footer class="py-lg-4 py-md-3 py-sm-3 py-3 text-center">
          <div class="copy-agile-right">
             <p> 
-               Â© 2018 Happy Retail. All Rights Reserved | Designed by CGI</a>
+               © 2018 Happy Retail. All Rights Reserved | Designed by CGI&trade;</a>
             </p>
          </div>
       </footer>
@@ -129,7 +129,6 @@
          		}
          	});
          	$("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
-         
          }); //]]>
       </script>
       <!-- //price range (top products) -->

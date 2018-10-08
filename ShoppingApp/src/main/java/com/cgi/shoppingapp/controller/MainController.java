@@ -19,7 +19,6 @@ public class MainController {
 	@GetMapping("/")
 	public String productHome(Model model) {
 		List<Product> products = service.showAllProducts();
-		System.out.println(products);
 		model.addAttribute("products",products);
 		return "product";
 	}

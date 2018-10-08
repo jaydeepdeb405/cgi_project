@@ -22,7 +22,7 @@
                               <a href="single.html">${product.product_name }</a>
                            </h4>
                            <div class="grid-price mt-2">
-                              <span class="money ">${product.price }</span>
+                              <span class="money ">&#8377; ${product.price }</span>
                            </div>
                         </div>
                      </div>
