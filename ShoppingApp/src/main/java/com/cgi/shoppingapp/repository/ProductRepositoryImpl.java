@@ -1,4 +1,4 @@
-package com.cgi.shoppingapp.dao;
+package com.cgi.shoppingapp.repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.cgi.shoppingapp.model.Product;
 
 @Repository
-public class ProductDaoImpl implements ProductDao {
+public class ProductRepositoryImpl implements ProductRepository {
 	
 	private static final String VIEW_ALL_PRODUCTS_QUERY = "SELECT * FROM product";
 	
