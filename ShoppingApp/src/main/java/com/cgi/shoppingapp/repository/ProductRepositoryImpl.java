@@ -16,6 +16,8 @@ public class ProductRepositoryImpl implements ProductRepository {
 	
 	private static final String VIEW_ALL_PRODUCTS_QUERY = "SELECT * FROM product";
 	private static final String SORT_PRODUCTS_BY_PRICE_QUERY = "SELECT * FROM product where price between ? AND ? ";
+	private static final String SORT_PRODUCTS_BY_CATEGORY_QUERY = "SELECT * FROM product WHERE category LIKE ? ";
+	private static final String SORT_PRODUCTS_BY_GENDER_QUERY = "SELECT * FROM product where gender LIKE ?";
 	
 	@Autowired
 	private JdbcTemplate template;
@@ -27,7 +29,9 @@ public class ProductRepositoryImpl implements ProductRepository {
 					rs.getLong("product_id"), 
 					rs.getString("product_name"),
 					rs.getDouble("price"),
-					rs.getString("image"));
+					rs.getString("image"),
+					rs.getString("category"),
+					rs.getString("gender"));
 		}
 	}
 	
@@ -40,6 +44,18 @@ public class ProductRepositoryImpl implements ProductRepository {
 	public List<Product> getProductsByPrice(Integer minPrice, Integer maxPrice) {
 		Integer[] params = {minPrice, maxPrice};
 		return template.query(SORT_PRODUCTS_BY_PRICE_QUERY, params, new ProductMapper());
+	}
+	
+	@Override
+	public List<Product> getProductsByCategory(String category) {
+		String[] params = {category};
+		return template.query(SORT_PRODUCTS_BY_CATEGORY_QUERY, params, new ProductMapper());
+	}
+	
+	@Override
+	public List<Product> getProductsByGender(String gender) {
+		String[] params = {gender};
+		return template.query(SORT_PRODUCTS_BY_GENDER_QUERY, params, new ProductMapper());
 	}
 	
 }

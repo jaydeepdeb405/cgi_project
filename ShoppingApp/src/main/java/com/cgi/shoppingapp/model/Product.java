@@ -5,13 +5,17 @@ public class Product {
 	private String product_name;
 	private double price;
 	private String image_url;
+	private String category;
+	private String gender;
 	
-	public Product(long product_id, String product_name, double price, String image_url) {
+	public Product(long product_id, String product_name, double price, String image_url, String category, String gender) {
 		super();
 		this.product_id = product_id;
 		this.product_name = product_name;
 		this.price = price;
 		this.image_url = image_url;
+		this.category = category;
+		this.gender = gender;
 	}
 
 	public long getProduct_id() {
@@ -44,6 +48,22 @@ public class Product {
 
 	public void setImage_url(String image_url) {
 		this.image_url = image_url;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 	@Override

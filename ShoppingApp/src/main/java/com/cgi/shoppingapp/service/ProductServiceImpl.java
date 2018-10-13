@@ -23,4 +23,15 @@ public class ProductServiceImpl implements ProductService {
 	public List<Product> filterByPriceRange(Integer minPrice, Integer maxPrice) {
 		return productRepository.getProductsByPrice(minPrice, maxPrice);
 	}
+	
+	@Override
+	public List<Product> filterByCategory(String category){
+		return productRepository.getProductsByCategory(category);
+	}
+	
+	@Override
+	public List<Product> filterByGender(String gender){
+		return productRepository.getProductsByGender(gender);
+	}
+	
 }
