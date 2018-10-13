@@ -12,10 +12,15 @@ import com.cgi.shoppingapp.repository.ProductRepository;
 public class ProductServiceImpl implements ProductService {
 	
 	@Autowired
-	private ProductRepository productDao;
+	private ProductRepository productRepository;
 	
 	@Override
 	public List<Product> showAllProducts() {
-		return productDao.getAllProducts();
+		return productRepository.getAllProducts();
+	}
+	
+	@Override
+	public List<Product> filterByPriceRange(Integer minPrice, Integer maxPrice) {
+		return productRepository.getProductsByPrice(minPrice, maxPrice);
 	}
 }

@@ -5,5 +5,5 @@ import com.cgi.shoppingapp.model.User;
 
 public interface AuthService {
 	public boolean login(User user);
-	public String register(User user,Customer customer);
+	public boolean register(User user,Customer customer);
 }

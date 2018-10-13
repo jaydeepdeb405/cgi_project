@@ -1,13 +1,17 @@
 package com.cgi.shoppingapp.model;
 
 public class Customer {
-	private long id;
+	private Long id;
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String address;
 	private String phone;
-	public Customer(long id, String firstName, String lastName, String email, String address, String phone) {
+	
+	public Customer() {
+		
+	}
+	public Customer(Long id, String firstName, String lastName, String email, String address, String phone) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -16,10 +20,10 @@ public class Customer {
 		this.address = address;
 		this.phone = phone;
 	}
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getFirstName() {
@@ -51,5 +55,10 @@ public class Customer {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", address=" + address + ", phone=" + phone + "]";
 	}
 }

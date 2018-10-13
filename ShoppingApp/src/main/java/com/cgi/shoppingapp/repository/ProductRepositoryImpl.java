@@ -15,6 +15,7 @@ import com.cgi.shoppingapp.model.Product;
 public class ProductRepositoryImpl implements ProductRepository {
 	
 	private static final String VIEW_ALL_PRODUCTS_QUERY = "SELECT * FROM product";
+	private static final String SORT_PRODUCTS_BY_PRICE_QUERY = "SELECT * FROM product where price between ? AND ? ";
 	
 	@Autowired
 	private JdbcTemplate template;
@@ -33,6 +34,12 @@ public class ProductRepositoryImpl implements ProductRepository {
 	@Override
 	public List<Product> getAllProducts() {
 		return template.query(VIEW_ALL_PRODUCTS_QUERY, new ProductMapper());
+	}
+	
+	@Override
+	public List<Product> getProductsByPrice(Integer minPrice, Integer maxPrice) {
+		Integer[] params = {minPrice, maxPrice};
+		return template.query(SORT_PRODUCTS_BY_PRICE_QUERY, params, new ProductMapper());
 	}
 	
 }

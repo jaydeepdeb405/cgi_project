@@ -1,22 +1,22 @@
 package com.cgi.shoppingapp.model;
 
 public class User {
-	private long id;
+	private Long id;
 	private String username;
 	private String password;
 	public User() {
 		
 	}
-	public User(long id, String username, String password) {
+	public User(Long id, String username, String password) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
 	}
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getUsername() {
@@ -31,5 +31,8 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + "]";
+	}
 }

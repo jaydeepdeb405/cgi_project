@@ -15,17 +15,20 @@ public class AuthServiceImpl implements AuthService {
 	
 	@Override
 	public boolean login(User user) {
-		if(userRepository.checkUserExists(user)) {
-			return true;
-		}else {
+		if(userRepository.getUsers(user).isEmpty()) {
 			return false;
+		}else {
+			return true;
 		}
 	}
 
 	@Override
-	public String register(User user, Customer customer) {
-		// TODO Auto-generated method stub
-		return "";
+	public boolean register(User user, Customer customer) {
+		if(userRepository.registrationSucess(user, customer)) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 }
