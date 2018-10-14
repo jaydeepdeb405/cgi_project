@@ -34,4 +34,14 @@ public class ProductServiceImpl implements ProductService {
 		return productRepository.getProductsByGender(gender);
 	}
 	
+	@Override
+	public List<Product> filterByBrand(String brand) {
+		return productRepository.getProductsByBrand(brand);
+	}
+	
+	@Override
+	public List<Product> search(String searchKey, String category) {
+		return productRepository.search(searchKey, category);
+	}
+	
 }

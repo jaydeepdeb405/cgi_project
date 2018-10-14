@@ -15,10 +15,12 @@ import com.cgi.shoppingapp.model.Product;
 public class ProductRepositoryImpl implements ProductRepository {
 	
 	private static final String VIEW_ALL_PRODUCTS_QUERY = "SELECT * FROM product";
-	private static final String SORT_PRODUCTS_BY_PRICE_QUERY = "SELECT * FROM product where price between ? AND ? ";
-	private static final String SORT_PRODUCTS_BY_CATEGORY_QUERY = "SELECT * FROM product WHERE category LIKE ? ";
+	private static final String SORT_PRODUCTS_BY_PRICE_QUERY = "SELECT * FROM product where price between ? AND ?";
+	private static final String SORT_PRODUCTS_BY_CATEGORY_QUERY = "SELECT * FROM product WHERE category LIKE ?";
 	private static final String SORT_PRODUCTS_BY_GENDER_QUERY = "SELECT * FROM product where gender LIKE ?";
-	
+	private static final String SORT_PRODUCTS_BY_BRAND_QUERY = "SELECT * FROM product where brand LIKE ?";
+	private static final String SEARCH_BY_CATEGORY_QUERY = "SELECT * FROM product where product_name LIKE ? AND category LIKE ?";
+
 	@Autowired
 	private JdbcTemplate template;
 	
@@ -26,12 +28,13 @@ public class ProductRepositoryImpl implements ProductRepository {
 		@Override
 		public Product mapRow(ResultSet rs, int rowNum) throws SQLException {
 			return new Product(
-					rs.getLong("product_id"), 
+					rs.getLong("id"), 
 					rs.getString("product_name"),
 					rs.getDouble("price"),
-					rs.getString("image"),
+					rs.getString("image_url"),
 					rs.getString("category"),
-					rs.getString("gender"));
+					rs.getString("gender"),
+					rs.getString("brand"));
 		}
 	}
 	
@@ -56,6 +59,20 @@ public class ProductRepositoryImpl implements ProductRepository {
 	public List<Product> getProductsByGender(String gender) {
 		String[] params = {gender};
 		return template.query(SORT_PRODUCTS_BY_GENDER_QUERY, params, new ProductMapper());
+	}
+	
+	@Override
+	public List<Product> getProductsByBrand(String brand) {
+		String[] params = {brand};
+		return template.query(SORT_PRODUCTS_BY_BRAND_QUERY, params, new ProductMapper());	
+	}
+	
+	@Override
+	public List<Product> search(String searchKey, String category) {
+		searchKey = searchKey.concat("%");
+		System.out.println(searchKey);
+		String[] params = {searchKey, category};
+		return template.query(SEARCH_BY_CATEGORY_QUERY, params, new ProductMapper());
 	}
 	
 }

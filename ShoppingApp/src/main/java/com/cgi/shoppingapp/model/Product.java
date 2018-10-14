@@ -1,29 +1,31 @@
 package com.cgi.shoppingapp.model;
 
 public class Product {
-	private long product_id;
+	private long id;
 	private String product_name;
 	private double price;
 	private String image_url;
 	private String category;
 	private String gender;
+	private String brand;
 	
-	public Product(long product_id, String product_name, double price, String image_url, String category, String gender) {
+	public Product(long id, String product_name, double price, String image_url, String category, String gender, String brand) {
 		super();
-		this.product_id = product_id;
+		this.id = id;
 		this.product_name = product_name;
 		this.price = price;
 		this.image_url = image_url;
 		this.category = category;
 		this.gender = gender;
+		this.brand = brand;
 	}
 
-	public long getProduct_id() {
-		return product_id;
+	public long get_id() {
+		return id;
 	}
 
-	public void setProduct_id(long product_id) {
-		this.product_id = product_id;
+	public void set_id(long id) {
+		this.id = id;
 	}
 
 	public String getProduct_name() {
@@ -66,10 +68,19 @@ public class Product {
 		this.gender = gender;
 	}
 
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+
 	@Override
 	public String toString() {
-		return "Product [product_id=" + product_id + ", product_name=" + product_name + ", price=" + price
-				+ ", image_url=" + image_url + "]";
+		return "Product [product_id=" + id + ", product_name=" + product_name + ", price=" + price
+				+ ", image_url=" + image_url + ", category=" + category + ", gender=" + gender + ", brand=" + brand
+				+ "]";
 	}
 	
 }

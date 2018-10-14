@@ -9,4 +9,6 @@ public interface ProductService {
 	public List<Product> filterByPriceRange(Integer minPrice, Integer maxPrice);
 	public List<Product> filterByCategory(String category);
 	public List<Product> filterByGender(String gender);
+	public List<Product> filterByBrand(String brand);
+	public List<Product> search(String searchKey, String category);
 }
